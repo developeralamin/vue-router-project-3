@@ -1,5 +1,6 @@
 <template>
         <section>
+         <GobackVue/>
            <h2>{{ experience.name }}</h2>
             <img :src="`/images/${experience.image}`" :alt="experience.name">
 

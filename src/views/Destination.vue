@@ -2,6 +2,9 @@
 <div> 
     <section class="destination">
          <h1> {{ destination.name }}</h1>
+          <GobackVue/>
+          <br>
+          <br>
          <div class="destination-details">
             <img :src="`/images/${destination.image}`" :alt="destination.name">
             <p>{{ destination.description }}</p>
@@ -16,19 +19,11 @@
        <h2>Top experiences  {{ destination.name }}</h2>
 
        <div class="cards">
-       
-       <!-- <router-link
-          v-for="experience in destination.experiences"
-            :key="experience.slug"
-            :to="{ name:'experience', params:{ experienceSlug: experience.slug }}"
-         >  
-        <ExperienceCardVue :experience="experience" />
-              
-         </router-link> -->
+      
           <router-link
-        v-for="experience in destination.experiences"
-        :key="experience.slug"
-        :to="{name: 'experience.show', params:{experienceSlug: experience.slug}}"
+          v-for="experience in destination.experiences"
+          :key="experience.slug"
+          :to="{name: 'experience.show', params:{experienceSlug: experience.slug}}"
       >
         <ExperienceCardVue
           :experience="experience"
@@ -47,11 +42,13 @@
 <script>
 import sourceData from '@/data.json'
 import ExperienceCardVue  from '@/components/ExperienceCard.vue';
+import GobackVue from '@/components/Goback.vue';
 
 export default {
     name: 'VueSchoolProjectDestination',
     components:{
-        ExperienceCardVue
+        ExperienceCardVue,
+        GobackVue
     },
     props:{
          id:{type:String, required:true}
@@ -69,5 +66,13 @@ export default {
 </script>
 
 <style>
+
+button {
+   border: none;
+    background: #080101;
+    padding: 9px 20px;
+    color: white;
+    cursor: pointer;
+}
 
 </style>
